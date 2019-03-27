@@ -1,4 +1,13 @@
 *.swp
-tmp
-log
-spring/
+
+/.bundle
+
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+/tmp/*
+/log/*
+!/log/.keep
+!/tmp/.keep
+
+/spring/*.pid
