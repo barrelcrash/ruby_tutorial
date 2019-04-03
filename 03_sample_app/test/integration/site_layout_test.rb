@@ -9,10 +9,11 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/home'
     assert_select "a[href=?]", root_path, count: 2
     assert_select "a[href=?]", help_path
+    assert_select "a[href=?]", signup_path
     assert_select "a[href=?]", about_path
     assert_select "a[href=?]", contact_path
 
     get contact_path
-    assert_equal "Contact | Ruby On Rails Tutorial Sample App", full_title("Contact")
+    assert_equal "Contact | Ruby on Rails Tutorial Sample App", full_title("Contact")
   end
 end
