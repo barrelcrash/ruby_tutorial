@@ -72,4 +72,11 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case.downcase, @user.reload.email
   end
+
+  test "user without password is not valid" do
+    @user = User.new(
+      name: "Example",
+      email: "user@example.com")
+    assert_not @user.valid?
+  end
 end
