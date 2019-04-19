@@ -7,8 +7,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   
   test "invalid signup information" do
     get signup_path
+    # assert no difference before and after the block
+    assert_select 'form[action="/signup"]'
     assert_no_difference 'User.count' do
-      post users_path, params: {
+      post signup_path, params: {
         user: {
           name: "",
           email: "user@invalid",
@@ -18,5 +20,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       }
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert-danger'
+  end
+
+  test "invalid signup error messages" do
   end
 end
