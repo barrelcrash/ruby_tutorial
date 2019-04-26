@@ -43,4 +43,9 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
+  # forgets a user (deleting their remember token)
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 end
