@@ -20,7 +20,10 @@ class User < ApplicationRecord
 
   validates :password,
     presence: true,
-    length: {minimum: 6}
+    length: {minimum: 6},
+    # has_secure_password prevents users from having nil passwords, this just
+    # allows users to edit their info without providing a password
+    allow_nil: true 
 
   # returns the hash digest of the given string
   def User.digest(string)
