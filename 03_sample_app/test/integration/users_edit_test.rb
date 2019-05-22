@@ -79,4 +79,12 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal name, @user.name
     assert_equal email, @user.email
   end
+
+  test "redirect only works the first time" do
+    get edit_user_path(@user)
+    assert_match /http:\/\/www.example.com\/users\/\d+\/edit/, session[:forwarding_url]
+    log_in_as(@user)
+    assert_redirected_to edit_user_path(@user)
+    assert_nil session[:forwarding_url]
+  end
 end
