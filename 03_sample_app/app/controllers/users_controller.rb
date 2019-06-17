@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     # TODO: figure out why `where` clause doesn't work
+    # see exercises for 11.3.3
     # puts "HELLO #{User.all.length}"
     # puts "HELLO #{User.where(activated: true).length}"
     # puts "HELLO #{User.first.inspect}"
@@ -15,7 +16,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # TODO: write integration test for this
+    # TODO: write test for this
+    # see exercises for 11.3.3
     redirect_to root_url and return unless @user.activated?
   end
 
