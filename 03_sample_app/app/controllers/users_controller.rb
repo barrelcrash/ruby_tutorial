@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     # TODO: write test for this
     # see exercises for 11.3.3
     redirect_to root_url and return unless @user.activated?
