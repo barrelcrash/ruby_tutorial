@@ -18,6 +18,26 @@ most_recent:
   created_at: <%= Time.zone.now %>
   user: michael
 
+ants:
+  content: "that's how you get ants"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+zone:
+  content: "danger zone"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+tone:
+  content: "sarcastic tone"
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+van:
+  content: "rolling van"
+  created_at: <%= 4.hours.ago %>
+  user: lana
+
 <% 30.times do |n| %>
 micropost_<%= n %>:
   content: <%= Faker::Lorem.sentence(5) %>
