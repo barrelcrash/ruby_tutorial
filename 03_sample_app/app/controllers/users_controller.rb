@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     # TODO: write test for this
     # see exercises for 11.3.3
     redirect_to root_url and return unless @user.activated?
@@ -66,15 +67,6 @@ class UsersController < ApplicationController
 
     # Before filters
     
-    #confirm a logged-in user
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
