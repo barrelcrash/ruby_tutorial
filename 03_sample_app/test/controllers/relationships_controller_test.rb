@@ -10,7 +10,7 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
 
   test "delete should require logged-in user" do
     assert_no_difference 'Relationship.count' do
-      delete relationships_path
+      delete relationship_path(relationships(:one))
     end
     assert_redirected_to login_url
   end
